@@ -27,8 +27,6 @@ class OrchestratorTests(unittest.TestCase):
         self.assertIn("api_contract", context.artifacts)
         self.assertIn("missing_requirements", context.artifacts)
 
-<<<<<<< HEAD
-=======
     def test_successful_build_stops_without_unnecessary_architecture_retries(self) -> None:
         orchestrator = OrchestratorAgent(BuildConfig(max_iterations=4, max_retries_per_milestone=1))
         context = orchestrator.build("Automated release notes writer")
@@ -38,7 +36,6 @@ class OrchestratorTests(unittest.TestCase):
         self.assertEqual(architecture_step["milestone"], "architecture")
         self.assertEqual(architecture_step["status"], "success")
 
->>>>>>> d8e5aeb0839f2ddc99047fb3a8e7b590cdb27d09
 
 if __name__ == "__main__":
     unittest.main()

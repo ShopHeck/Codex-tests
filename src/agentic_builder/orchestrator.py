@@ -106,11 +106,7 @@ class OrchestratorAgent:
             evaluation.status = TaskStatus.SUCCESS
             iteration_record["steps"].append({"milestone": evaluation.name, "status": evaluation.status.value})
 
-<<<<<<< HEAD
-            severe_arch_risk = any("bottleneck" in r for r in evaluation_report.get("scalability_risks", []))
-=======
             severe_arch_risk = bool(evaluation_report.get("blocking_scalability_risks", []))
->>>>>>> d8e5aeb0839f2ddc99047fb3a8e7b590cdb27d09
             if severe_arch_risk and iteration < self.config.max_iterations:
                 architecture.status = TaskStatus.RETRYING
                 architecture.notes.append("Revisit architecture for scalability bottleneck")
