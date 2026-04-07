@@ -250,6 +250,7 @@ class EvaluationAgent(BaseAgent):
                 "code_quality": "good",
                 "maintainability": "high (modular boundaries)",
                 "scalability_risks": risk_items[:2],
+                "blocking_scalability_risks": [],
                 "security_concerns": [risk_items[2]],
                 "refactoring_opportunities": [
                     "Externalize agent configs for pluggable prompts/policies.",
