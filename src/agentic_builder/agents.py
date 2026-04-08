@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import textwrap
+from html import escape
 from dataclasses import dataclass
 from typing import Dict, List
 
@@ -180,6 +181,7 @@ class ImplementationAgent(BaseAgent):
 
     def run(self, context: BuildContext) -> Dict[str, str]:
         with self.logger.timed(self.name, "implementation"):
+            escaped_product_idea = escape(context.product_idea, quote=True)
             files = {
                 "prototype/app.py": textwrap.dedent(
                     f'''
@@ -245,7 +247,7 @@ class ImplementationAgent(BaseAgent):
                         <title>Agentic Growth Studio</title>
                         <meta
                           name="description"
-                          content="Launch conversion-focused automation for {context.product_idea}."
+                          content="Launch conversion-focused automation for {escaped_product_idea}."
                         />
                         <link rel="stylesheet" href="./styles.css" />
                       </head>
@@ -253,7 +255,7 @@ class ImplementationAgent(BaseAgent):
                         <main class="layout">
                           <section class="hero card">
                             <p class="eyebrow">Revenue Automation Platform</p>
-                            <h1>Ship {context.product_idea} with beautiful UI and faster conversions.</h1>
+                            <h1>Ship {escaped_product_idea} with beautiful UI and faster conversions.</h1>
                             <p class="subtitle">
                               Turn repetitive workflows into automated customer journeys with built-in
                               lead capture, qualification, and follow-up playbooks.
